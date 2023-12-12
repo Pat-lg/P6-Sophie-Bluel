@@ -19,9 +19,9 @@ const getDataWorks = async () => {
 
 const divGallery = document.querySelector(".gallery")
 
-const getdata = getDataWorks();
+const dataWork = getDataWorks();
 
-getdata.then((completeData) => {
+dataWork.then((completeData) => {
 
   // créer les balises figure+ img + figurecaption
   completeData.forEach(objet => {
@@ -63,19 +63,18 @@ const getDataCategories = async () => {
 const allButtons = document.querySelector(".all-buttons");
 
 
-// button.classList.add("btn-filter");
+const dataCategories = getDataCategories();
 
-getDataCategories()
-
-  .then((dataCategories) => {
+  dataCategories.then((dataCategories) => {
 
     dataCategories.forEach(filterButton => {
+
       // créer les boutons + noms + class btn-filter
       const button = document.createElement("button");
       button.textContent = filterButton.name;
       button.classList.add("btn-filter");
+
       // ajout des boutons ds la div all-buttons
       allButtons.appendChild(button);
     });
   })
-
