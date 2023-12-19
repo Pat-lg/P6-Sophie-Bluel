@@ -251,13 +251,13 @@ li:hover {
 .btn-filter:hover {
 	cursor: pointer;
 	color: #FFFEF8;
-	background:#1D6154;
-	transition: 0.2s; 
+	background: #1D6154;
+	transition: 0.2s;
 }
 
 .btn-filter.selected {
 	color: #FFFEF8;
-	background:#1D6154;
+	background: #1D6154;
 	pointer-events: none;
 }
 
@@ -325,7 +325,30 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
 	transition: 0.2s;
-	background-color:#0E2F28;
+	background-color: #0E2F28;
+}
+
+.link-lostpassword {
+	display: flex;
+	justify-content: center;
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-decoration-line: underline;
+}
+
+footer {
+	width: 100%;
+}
+
+.footer-login {
+	position: fixed;
+	bottom: 0;
+	left: -90px;
+	width: 100%;
 }
 
 footer nav ul {
