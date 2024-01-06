@@ -100,7 +100,7 @@ const sortBtn = async () => {
 
       if (idBtn !== "0") {
         const sortedCategories = retreiveDataWorks.filter((element) => {
-          
+
           return element.categoryId == idBtn;
         });
         sortedCategories.forEach(category => {
@@ -109,10 +109,10 @@ const sortBtn = async () => {
 
           const image = document.createElement("img");
           image.src = category.imageUrl;
-      
+
           const figCaption = document.createElement("figurecaption");
           figCaption.innerHTML = category.title;
-      
+
           // ajout des balises figure + enfants ( img; figurecaption) dans la div .gallery
           divGallery.appendChild(figure);
           figure.appendChild(image);
@@ -123,20 +123,20 @@ const sortBtn = async () => {
 
           // créer les balises figure+ img + figurecaption
           completeData.forEach(objet => {
-            
+
             const figure = document.createElement("figure");
-        
+
             const image = document.createElement("img");
             image.src = objet.imageUrl;
-        
+
             const figCaption = document.createElement("figurecaption");
             figCaption.innerHTML = objet.title;
-        
+
             // ajout des balises figure + enfants ( img; figurecaption) dans la div .gallery
             divGallery.appendChild(figure);
             figure.appendChild(image);
             figure.appendChild(figCaption);
-        
+
           });
         });
       }
