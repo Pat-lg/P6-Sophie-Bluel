@@ -136,7 +136,6 @@ const sortBtn = async () => {
             divGallery.appendChild(figure);
             figure.appendChild(image);
             figure.appendChild(figCaption);
-
           });
         });
       }
@@ -144,3 +143,26 @@ const sortBtn = async () => {
   });
 }
 sortBtn();
+
+/******************* page d'accueil  utilisateur connecter ****************/
+
+// changer le bouton login en logout
+const token = localStorage.token;
+console.log(token);
+
+if (token) {
+  document.getElementById("btn-login").remove();
+  document.querySelector(".all-buttons").remove();
+} else {
+  document.getElementById("btn-logout").remove();
+};
+
+
+const deconnectLogout = document.getElementById("btn-logout");
+
+deconnectLogout.addEventListener("click", () => {
+  if (localStorage.token) {
+    localStorage.removeItem("token");
+    document.getElementById("btn-login").add();
+  }
+});

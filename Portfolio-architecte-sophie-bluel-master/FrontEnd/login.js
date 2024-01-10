@@ -32,7 +32,7 @@ const postRequest = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
     });
-
+console.log(response);
     if (!response.ok) throw new Error("Erreur dans l’identifiant ou le mot de passe")
     const result = await response.json();
 
