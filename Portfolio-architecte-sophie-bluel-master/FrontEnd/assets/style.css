@@ -111,6 +111,54 @@ body {
 	line-height: 1;
 }
 
+.modal {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.30);
+	display: grid;
+	place-content: center;
+}
+
+.modal-wrapper {
+	border-radius: 10px;
+	background: #FFF;
+	width: 630px;
+	max-width: calc(100vw - 20px);
+	height: 688px;
+	overflow: auto;
+	display: grid;
+	place-items: center;
+	position: relative;
+}
+
+.close-modal {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border: none;
+	background-color: white;
+}
+
+.close-modal i {
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.title-modal {
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+hr {
+	width: 70%;}
+
 .banner {
 	display: flex;
 	flex-direction: row;
@@ -218,7 +266,7 @@ nav li a {
 	color: #000;
 }
 
-nav li a:hover{
+nav li a:hover {
 	color: #B1663C;
 	cursor: pointer;
 }
@@ -298,7 +346,8 @@ li:hover {
 	padding: 20px 0px 50px 0px;
 }
 
-.btn-filter {
+.btn-filter,
+.add-picture {
 	color: #1D6154;
 	background: #FFFEF8;
 	border-radius: 60px;
@@ -313,7 +362,14 @@ li:hover {
 	place-items: center;
 }
 
-.btn-filter:hover {
+.add-picture {
+	width: 237px;
+	height: 36px;
+	place-content: center;
+}
+
+.btn-filter:hover,
+.add-picture:hover {
 	cursor: pointer;
 	color: #FFFEF8;
 	background: #1D6154;

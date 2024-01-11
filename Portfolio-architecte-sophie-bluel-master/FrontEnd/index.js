@@ -146,7 +146,7 @@ sortBtn();
 
 /******************* page d'accueil  utilisateur connecter ****************/
 
-// changer le bouton login en logout
+// changer le bouton login en logout + suppression des boutons-filtres et bannière
 const token = localStorage.token;
 console.log(token);
 
@@ -154,10 +154,14 @@ if (token) {
   document.getElementById("btn-login").remove();
   document.querySelector(".all-buttons").remove();
 } else {
-  document.getElementById("btn-logout").remove();
+  document.getElementById("btn-logout").remove(); 
+  document.querySelector(".btn-modif").remove();
+  document.querySelector(".banner").remove();
+
+
 };
 
-
+// changer le bouton logout en login 
 const deconnectLogout = document.getElementById("btn-logout");
 
 deconnectLogout.addEventListener("click", () => {
@@ -166,3 +170,6 @@ deconnectLogout.addEventListener("click", () => {
     document.getElementById("btn-login").add();
   }
 });
+
+/********** boîte modale  *********/
+
