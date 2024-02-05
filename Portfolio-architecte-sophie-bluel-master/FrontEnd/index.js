@@ -1,5 +1,5 @@
 const urlWorks = "http://localhost:5678/api/works";
-
+let works = [];
 /* récupération des données Works via l'API */
 
 const getDataWorks = async () => {
@@ -7,7 +7,7 @@ const getDataWorks = async () => {
     const response = await fetch(urlWorks);
     if (!response.ok) throw new Error("not a valid response")
     const data = await response.json();
-    console.table(data);
+    works = data;
     return data;
   }
   catch (err) {
@@ -40,7 +40,6 @@ dataWork.then((completeData) => {
 
   });
 })
-console.log(dataWork);
 /* récupération des données Categories via l'API */
 
 const urlCategories = "http://localhost:5678/api/categories";
@@ -50,7 +49,6 @@ const getDataCategories = async () => {
     const response = await fetch(urlCategories);
     if (!response.ok) throw new Error("not a valid response")
     const dataCategories = await response.json();
-    console.table(dataCategories);
     return dataCategories;
   }
   catch (err) {
@@ -147,23 +145,21 @@ sortBtn();
 /******************* page d'accueil  utilisateur connecter ****************/
 
 // changer le bouton login en logout + suppression des boutons-filtres et bannière
-const token = localStorage.token;
-console.log(token);
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.token;
 
-if (token) {
-  document.getElementById("btn-login").remove();
-  document.querySelector(".all-buttons").remove();
-} else {
-  document.getElementById("btn-logout").remove(); 
-  document.querySelector(".btn-modif").remove();
-  document.querySelector(".banner").remove();
-
-
-};
+  if (token) {
+    document.getElementById("btn-login").remove();
+    document.querySelector(".all-buttons").remove();
+  } else {
+    document.getElementById("btn-logout").remove();
+    document.querySelector(".btn-modif").remove();
+    document.querySelector(".banner").remove();
+  };
+});
 
 // changer le bouton logout en login 
 const deconnectLogout = document.getElementById("btn-logout");
-
 deconnectLogout.addEventListener("click", () => {
   if (localStorage.token) {
     localStorage.removeItem("token");
@@ -172,4 +168,75 @@ deconnectLogout.addEventListener("click", () => {
 });
 
 /********** boîte modale  *********/
+
+// ouvrir la boîte modale
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnModif = document.querySelector(".btn-modif");
+  const modal = document.getElementById("modal");
+  const btnCloseModal = document.querySelector(".close-modal");
+  const wrapModal = document.querySelector(".modal-wrapper");
+
+  // ouvrir la boîte modale avec le bouton modifier
+  btnModif.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "grid";
+    displayGalleryModal();
+  });
+
+  // fermer la boîte modale en cliquant à l'exterieur de la boîte
+  modal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  wrapModal.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal.style.display = "grid";
+  });
+
+  // fermer la boîte modale avec le bouton 
+  btnCloseModal.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal.style.display = "none";
+  });
+});
+
+// ajouter galerie dans la boîte modale
+
+const displayGalleryModal = async () => {
+  const modal = document.getElementById("gallery-modal");
+  // RAS de la galerie de la modale
+  modal.innerText = "";
+
+  works.forEach(objet => {
+
+    const figure = document.createElement("figure");
+
+    const image = document.createElement("img");
+    image.src = objet.imageUrl;
+    image.alt = objet.title;
+
+    const span = document.createElement("span");
+    const bin = document.createElement("i");
+    bin.classList.add("fa-solid", "fa-trash-can");
+    bin.id = objet.id;
+    
+    
+   
+    // ajout des balises figure + enfants ( img; figurecaption; poubelle ) dans la div .gallery
+    modal.appendChild(figure);
+    figure.appendChild(image);
+    span.appendChild(bin);
+    figure.appendChild(span);
+  })
+};
+
+// fonction pour ouvrir la seconde modale en cliquant sur le btn ajouter une photo 
+
+
+
+// fonction pour supprimer un projet en cliquant sur la poubelle
+
+
+
 

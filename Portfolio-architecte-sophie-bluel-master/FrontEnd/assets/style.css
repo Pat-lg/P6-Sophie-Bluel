@@ -117,7 +117,7 @@ body {
 	width: 100vw;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.30);
-	display: grid;
+	display: none;
 	place-content: center;
 }
 
@@ -156,8 +156,51 @@ body {
 	line-height: normal;
 }
 
+#gallery-modal {
+	margin-top: -30px;
+	width: 70%;
+	height: 60%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 40% 40% 40%;
+	grid-row-gap: 30px;
+	padding-bottom: 40px;
+}
+
+#gallery-modal figure {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#gallery-modal figure img {
+	width: 90%;
+	height: 100%;
+}
+
+#gallery-modal figure span {
+	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	background-color: black;
+	height: 18px;
+	width: 18px;
+	border-radius: 2px;
+}
+
+#gallery-modal figure span .fa-trash-can {
+  color: white;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
 hr {
-	width: 70%;}
+	width: 70%;
+}
 
 .banner {
 	display: flex;
