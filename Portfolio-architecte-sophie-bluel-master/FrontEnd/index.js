@@ -1,5 +1,7 @@
 const urlWorks = "http://localhost:5678/api/works";
 let works = [];
+let categoriesApi = [];
+const token = localStorage.token;
 /* récupération des données Works via l'API */
 
 const getDataWorks = async () => {
@@ -49,6 +51,7 @@ const getDataCategories = async () => {
     const response = await fetch(urlCategories);
     if (!response.ok) throw new Error("not a valid response")
     const dataCategories = await response.json();
+    categoriesApi = dataCategories;
     return dataCategories;
   }
   catch (err) {
@@ -220,23 +223,34 @@ const displayGalleryModal = async () => {
     const bin = document.createElement("i");
     bin.classList.add("fa-solid", "fa-trash-can");
     bin.id = objet.id;
-    
-    
-   
+
     // ajout des balises figure + enfants ( img; figurecaption; poubelle ) dans la div .gallery
     modal.appendChild(figure);
     figure.appendChild(image);
     span.appendChild(bin);
     figure.appendChild(span);
   })
+  removeProject();
 };
-
-// fonction pour ouvrir la seconde modale en cliquant sur le btn ajouter une photo 
-
-
 
 // fonction pour supprimer un projet en cliquant sur la poubelle
 
+function removeProject() {
+  // selectionner toutes les icônes poubelles 
+  const allBin = document.querySelectorAll(".fa-trash-can");
+  // console.table(allBin);
+  allBin.forEach((objet) => {
+    objet.addEventListener("click", () => {
+      const idBin = objet.id;
+      fetch(`http://localhost:5678/api/works/${idBin}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    })
+  });
+}
 
-
-
+// fonction pour ouvrir la seconde modale en cliquant sur le btn ajouter une photo  
