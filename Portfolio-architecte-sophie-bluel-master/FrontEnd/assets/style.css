@@ -196,7 +196,7 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 80%;
-  width: 80%;
+  width: 65%;
   gap: 20px;
 }
 .modal-add form .box-picture {
@@ -205,9 +205,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 30%;
+  height: 169px;
   background-color: #e8f1f6;
-  gap: 10px;
+	gap: 15px;
+	padding-top: 30px;
+	padding-bottom: 0;
 }
 .modal-add form .box-picture img {
   display: none;
@@ -218,6 +220,7 @@ body {
 }
 .modal-add form .box-picture .fa-image {
   font-size: 4rem;
+	height: 60px;
   color: #b9c5cc;
 }
 .modal-add form .box-picture .add-photo {
@@ -245,14 +248,21 @@ body {
   height: 8%;
 	border: none;
 }
+.modal-add hr{
+	width: 65%;
+	position: absolute;
+	bottom: 100px;
+}
+
 .modal-add form .container-add-work {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   width: 100%;
-  border-top: 1px solid gray;
+	margin-top: 30px;
 }
+
 .modal-add form .container-add-work .btn-check-form {
   background-color: #1d6154;
   padding: 9px 50px;
@@ -273,6 +283,7 @@ body {
   font-family: Syne;
   cursor: pointer;
 	border: none;
+	width: 237px;
 }
 .modal-add form .btn-add-work:hover {
   background-color:#1d6154;
