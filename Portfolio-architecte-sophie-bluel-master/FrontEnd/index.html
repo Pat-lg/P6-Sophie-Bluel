@@ -24,8 +24,31 @@
 			<hr>
 			<button class="add-picture"> Ajouter une photo </button>
 		</div>
+		<div class="modal-add">
+			<span class="left"><i class="fa-solid fa-arrow-left"></i></span>
+			<span class="cross"><i class="fa-solid fa-xmark"></i></span>
+			<h3>Ajout photo</h3>
+			<form id="form-add">
+				<div class="box-picture">
+					<i class="fa-regular fa-image"></i>
+					<label for="file" class="add-photo">+ Ajouter photo</label>
+					<p>jpg,png : 4mo max</p>
+					<input type="file" name="image" id="file">
+					<img id="previewImage" src="#">
+				</div>
+				<label for="title" >Titre</label>
+				<input type="text" name="title" id="title">
+				<label for="category">Catégorie</label>
+				<select id="category" name="category">
+				</select>
+				<div class="container-add-work ">
+					<button type="submit" class="btn-add-work">Valider</button>
+				</div>
+			</form>
+		</div>
 
 	</aside>
+
 	<div class="banner">
 		<i class="fa-regular fa-pen-to-square"></i>
 		<p>Mode édition</p>
@@ -54,7 +77,8 @@
 				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs
 					dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans
 					le souci du détail, le respect du planning et du budget.</p>
-				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice).</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice).
+				</p>
 			</article>
 		</section>
 		<section id="portfolio">

@@ -254,3 +254,4 @@ function removeProject() {
 }
 
 // fonction pour ouvrir la seconde modale en cliquant sur le btn ajouter une photo  
+
