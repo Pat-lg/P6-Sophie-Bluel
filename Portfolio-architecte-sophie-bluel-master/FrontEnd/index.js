@@ -258,47 +258,74 @@ function removeProject() {
 
 // fonction pour ouvrir la seconde modale en cliquant sur le btn ajouter une photo  
 document.addEventListener('DOMContentLoaded', () => {
-  
-const btnOpenModal2 = document.querySelector(".add-picture");
-const firstdModal = document.querySelector(".modal-wrapper");
-const secondModal = document.querySelector(".modal-add");
-const arrowBackFirstModal = document.querySelector(".left");
-const crossModal = document.querySelector(".cross");
-const modal = document.getElementById("modal");
+
+  const btnOpenModal2 = document.querySelector(".add-picture");
+  const firstdModal = document.querySelector(".modal-wrapper");
+  const secondModal = document.querySelector(".modal-add");
+  const arrowBackFirstModal = document.querySelector(".left");
+  const crossModal = document.querySelector(".cross");
+  const modal = document.getElementById("modal");
+  const addPhoto = document.querySelector(".add-photo");
 
 
-function openSecondModal() {
+  function openSecondModal() {
 
-  btnOpenModal2.addEventListener("click", (e) => {
-    e.stopPropagation();
-    // probleme display none sur aside class modal
-    modal.style.display = "grid";
-    firstdModal.style.display = "none";
-    secondModal.style.display ="flex";
-  })
+    btnOpenModal2.addEventListener("click", (e) => {
+      e.stopPropagation();
+      // probleme display none sur aside class modal
+      modal.style.display = "grid";
+      firstdModal.style.display = "none";
+      secondModal.style.display = "flex";
+    })
 
-  arrowBackFirstModal.addEventListener("click", (e) => {
-    e.stopPropagation();
-    firstdModal.style.display = "grid";
-    secondModal.style.display ="none";
-  })
+    arrowBackFirstModal.addEventListener("click", (e) => {
+      e.stopPropagation();
+      firstdModal.style.display = "grid";
+      secondModal.style.display = "none";
+    })
 
-  crossModal.addEventListener("click", () => {
-    modal.style.display ="none";
-    secondModal.style.display ="none";
-  })
- 
-}
-openSecondModal();
+    crossModal.addEventListener("click", () => {
+      modal.style.display = "none";
+      secondModal.style.display = "none";
+    })
+
+    // pour empêcher la seconde modale de se fermer quand on appuie sur "Ajouter photo"
+    secondModal.addEventListener("click", (e) => {
+      e.stopPropagation();
+    })
+
+  }
+  openSecondModal();
 });
 
-// // Ajouter une image dans la seconde modale
+// Aperçu d'une image dans la seconde modale avant la mise en ligne
 
-// const image = document.querySelector(".box-picture img");
-// const input = document.querySelector(".box-picture input");
-// const label = document.querySelector(".box-picture label");
-// const incon = document.querySelector(".box-picture .fa-image");
-// const paragraph = document.querySelector(".containerFile p");
+document.addEventListener('DOMContentLoaded', () => {
+
+const image = document.querySelector(".box-picture img");
+const input = document.querySelector(".box-picture input");
+const label = document.querySelector(".box-picture label");
+const icon = document.querySelector(".box-picture .fa-image");
+const paragraph = document.querySelector(".box-picture p");
 
 
+input.addEventListener("change", () => {
+  console.log(input.files);
+  const file = input.files[0];
 
+  if (file) {
+    const reader = new FileReader();
+
+    label.style.display = "none";
+    icon.style.display = "none";
+    paragraph.style.display = "none";
+    image.style.display = "block";
+
+    reader.addEventListener("load", () => {
+      image.setAttribute("src", reader.result);
+    });
+
+    reader.readAsDataURL(file);
+  } 
+});
+});
